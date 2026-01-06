@@ -1,0 +1,22 @@
+class Solution {
+public:
+   vector<vector<string>> groupAnagrams(vector<string>& strs) {
+    vector<vector<string>>res;
+    unordered_map<string, vector<string>>r;
+    for (const string& s : strs) {
+        int count[26] = { 0 };
+        for (int i = 0; i < s.length(); i++) {
+            count[s[i] - 'a']++;
+        }
+            string key;
+            for (int i = 0; i < 26; i++) {
+                key = key + to_string(count[i]) + "+";
+            }
+                r[key].push_back(s);
+    }
+    for (const auto& pair : r) {
+        res.push_back(pair.second);
+    }
+    return res;
+}
+};
