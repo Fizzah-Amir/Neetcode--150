@@ -1,0 +1,17 @@
+int climbStairs(int n) {
+    for (auto& p : mp) {
+        if (p.first == n) {
+            return p.second;
+        }
+    }
+
+    if (n == 1) {
+        return 1;
+    }
+    if (n == 2) {
+        return 2;
+    }
+    int res = climbStairs(n - 1) + climbStairs(n - 2);
+    mp[n] = res;
+    return res;
+}
